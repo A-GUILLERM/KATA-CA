@@ -1,0 +1,52 @@
+<form class="converter-form-wrapper" [formGroup]="form">
+  <div class="rates">
+    <mat-form-field appearance="fill">
+      <mat-label>Taux en temps réel EUR/USD</mat-label>
+      <input readonly matInput formControlName="rate" />
+    </mat-form-field>
+
+    <div class="force">
+      <mat-form-field class="forceRate" appearance="fill">
+        <mat-label>Taux fixe EUR/USD</mat-label>
+        <input type="number" matInput formControlName="forceRate" />
+      </mat-form-field>
+
+      <mat-checkbox formControlName="forceToggle">Actif</mat-checkbox>
+    </div>
+  </div>
+
+  <div class="eu-us-wrapper">
+    <div class="user-entry">
+      <mat-form-field appearance="outline">
+        <mat-label>Montant</mat-label>
+        <input type="number" matInput formControlName="amount" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Devise origine</mat-label>
+        <input readonly matInput formControlName="startCurrency" />
+      </mat-form-field>
+
+      <button mat-icon-button class="button" (click)="toggleCurrency()">
+        <mat-icon>swap_horiz</mat-icon>
+      </button>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Devise souhaitée</mat-label>
+        <input readonly matInput formControlName="targetCurrency" />
+      </mat-form-field>
+
+      <button mat-flat-button class="button" (click)="convert()">
+        Convertir
+      </button>
+    </div>
+    <div [hidden]="!displayResult" class="result">
+      <mat-form-field class="result-input" appearance="fill">
+        <mat-label>
+          {{ "Montant converti en " + form.controls.targetCurrency.value }}
+        </mat-label>
+        <input readonly matInput formControlName="convertedValue" />
+      </mat-form-field>
+    </div>
+  </div>
+</form>

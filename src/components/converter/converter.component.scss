@@ -1,0 +1,24 @@
+:host {
+  display: flex;
+}
+
+.eu-us-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  gap: 10px;
+  .user-entry {
+    display: flex;
+    gap: 10px;
+  }
+  .result {
+    display: flex;
+    justify-content: center;
+    .result-input {
+      min-width: 250px;
+    }
+  }
+  .button {
+    margin-top: 7px;
+  }
+}
